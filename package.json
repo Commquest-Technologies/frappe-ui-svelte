@@ -1,0 +1,101 @@
+{
+	"name": "svelte-ui-frappe",
+	"version": "0.1.0",
+	"description": "A comprehensive Svelte 5 UI component library for Frappe applications",
+	"license": "MIT",
+	"type": "module",
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"sideEffects": [
+		"**/*.css"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./theme": "./dist/styles/theme.css",
+		"./styles/*": "./dist/styles/*"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run && npm run test:e2e",
+		"test:e2e": "playwright test",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"package": "svelte-kit sync && svelte-package && npm run package:styles",
+		"package:styles": "cp -r src/lib/styles dist/",
+		"prepublishOnly": "npm run package"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^5.0.0",
+		"@eslint/compat": "^2.0.1",
+		"@eslint/js": "^9.39.2",
+		"@playwright/test": "^1.58.0",
+		"@storybook/addon-a11y": "^10.2.4",
+		"@storybook/addon-docs": "^10.2.4",
+		"@storybook/addon-svelte-csf": "^5.0.10",
+		"@storybook/addon-vitest": "^10.2.4",
+		"@storybook/sveltekit": "^10.2.4",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.50.1",
+		"@sveltejs/package": "^2.5.7",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/forms": "^0.5.11",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.1.18",
+		"@types/dompurify": "^3.0.5",
+		"@types/feather-icons": "^4.29.4",
+		"@types/lodash-es": "^4.17.12",
+		"@types/node": "^22",
+		"@vitest/browser-playwright": "^4.0.18",
+		"@vitest/coverage-v8": "^4.0.18",
+		"eslint": "^9.39.2",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-storybook": "^10.2.4",
+		"eslint-plugin-svelte": "^3.14.0",
+		"globals": "^17.1.0",
+		"playwright": "^1.58.0",
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.4.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"storybook": "^10.2.4",
+		"svelte": "^5.48.2",
+		"svelte-check": "^4.3.5",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.53.1",
+		"vite": "^7.3.1",
+		"vitest": "^4.0.18",
+		"vitest-browser-svelte": "^2.0.2"
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"@floating-ui/dom": "^1.7.5",
+		"bits-ui": "^2.15.5",
+		"clsx": "^2.1.1",
+		"dayjs": "^1.11.19",
+		"dompurify": "^3.3.1",
+		"echarts": "^6.0.0",
+		"feather-icons": "^4.29.2",
+		"lodash-es": "^4.17.23",
+		"lucide-svelte": "^0.563.0",
+		"svelte-sonner": "^1.0.7"
+	}
+}
